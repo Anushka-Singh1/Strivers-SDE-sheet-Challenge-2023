@@ -1,0 +1,17 @@
+class Solution {
+public:
+    vector<vector<int>> generate(int numRows) {
+        vector<vector<int>>v={{1}};          // initializing first element to 1
+        for(int i=1;i<numRows;i++){          //from second row
+            vector<int>v1;                   // a new vector to store the elements of the current row
+            v1.push_back(1);                 //first column of every row is 1
+            for(int j=1;j<=i-1;j++){
+                v1.push_back(v[i-1][j-1]+v[i-1][j]);
+            }
+              v1.push_back(1);              //last column of every row is 1
+              v.push_back(v1);              
+        }
+        return v;
+    }
+    
+};
