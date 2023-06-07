@@ -1,0 +1,26 @@
+class Solution {
+public:
+    void setZeroes(vector<vector<int>>& matrix) {
+        int rows = matrix.size();             //initializing rows
+        int cols= matrix[0].size();           // initializing columns 
+         vector<bool> setRow(rows, false);
+         vector<bool> setCol(cols, false);
+
+        for(int i=0;i<rows;i++){       // the nested loop iterates over each element in matrix
+            for(int j=0;j<cols;j++){
+                if(matrix[i][j]==0){    // if the current element is 0
+                    setRow[i]=true;     // it sets the row flag to true
+                    setCol[j]= true;    // similarly set column flag to true
+                }
+            }
+        }
+for(int i=0;i<rows;i++){                // the nested loop iterates over each element again 
+            for(int j=0;j<cols;j++){
+                if(setRow[i] || setCol[j]){   // if either row or col flag is true 
+                matrix[i][j]=0;               // it sets the current element zero, effectively zeroing the corresponding rows and columns 
+            }
+          }
+        }
+        
+    }
+};
