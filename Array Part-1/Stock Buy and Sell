@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int minPrice= INT_MAX;                    //initialize minPrice to max value
+        int profit =0;
+        for(int i=0;i<prices.size();i++){
+            if(prices[i]<minPrice){               // if ith term is smaller than minPrice
+                minPrice= prices[i];              // minPrice will be updated
+            }
+            else if(prices[i]-minPrice>profit){   // if ith term is greater than minPrice 
+                profit = prices[i]-minPrice;      // and their difference is greater than profit
+            }                                     // profit will be updated
+        }
+        return profit;
+    }
+};
