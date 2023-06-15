@@ -1,0 +1,38 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+stack<int> sortstack(stack<int> &s)
+{
+   stack<int>tempstack;
+   // Empty the original stack
+   while(!s.empty())
+   {
+     int temp=s.top();
+     s.pop();
+   
+// Pop the elements from the tempstack and push them in the original stack
+   while(!tempstack.empty() && tempstack.top()<temp)
+   {
+     s.push(tempstack.top());
+     tempstack.pop();
+   }
+// Push the element in the tempstack
+    tempstack.push(temp);
+   }
+   return tempstack;
+}
+int main(){
+    stack<int> s;
+    s.push(5);
+    s.push(10);
+    s.push(1);
+    s.push(30);
+    s.push(20);
+    s.push(40);
+    stack<int> sortedstack=sortstack(s);
+    while(!sortedstack.empty())
+    {
+      cout<<sortedstack.top()<<" ";
+      sortedstack.pop();
+    }
+}
