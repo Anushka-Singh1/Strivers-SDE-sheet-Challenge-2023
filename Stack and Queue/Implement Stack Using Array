@@ -1,0 +1,78 @@
+
+#include<iostream>
+using namespace std;
+
+struct mystck
+{
+    int cap;
+    int *arr;
+    int top;
+
+    // Constructor to initialize the stack
+    mystck(int c){
+        cap=c;
+        arr= new int[c];
+        top=-1;
+    }
+
+    // Function to push an element to the top of the stack
+    void push(int x){
+        if(top==cap-1){
+            cout<<"stack overflow";
+            return;
+        }
+        top++;
+        arr[top]=x;
+    }
+
+    // Function to pop an element from the top of the stack
+    int pop(){
+        if (top==-1){
+            cout<<"stack underflow";
+            return -1;
+        }
+        int res= arr[top];
+        top--;
+        return res;
+    }
+
+    // Function to return the element at the top of the stack
+    int peak(){
+        if (top==-1){
+            cout<<"stack is empty";
+            return -1;
+        }
+        return arr[top];
+    }
+
+    // Function to return the size of the stack
+    int size(){
+        return (top+1);
+    }
+
+    // Function to check if the stack is empty
+    bool isempty(){
+        return (top==-1);
+    }
+};
+
+int main(){
+   mystck s(4);
+   s.push(5);
+   s.push(10);
+   s.push(15);
+   s.push(20);
+
+   cout<<"Size of stack: "<<s.size()<<endl;
+   cout<<"Top element: "<<s.peak()<<endl;
+
+   cout<<"Popping elements from the stack: ";
+   while(!s.isempty()){
+       cout<<s.pop()<<" ";
+   }
+
+   cout<<endl;
+   return 0;
+}
+
+
